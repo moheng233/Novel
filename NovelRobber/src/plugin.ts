@@ -10,10 +10,18 @@ export interface INovel {
 	updatetime: string
 }
 
-export interface INovelList {
+export interface ISearchNovel {
+	title: string,
+	url: string,
+	introduce?: string,
+	author?: string,
+	cover?: string,
+}
+
+export interface ISearchNovelList {
 	maxpage: number,
 	current: number,
-	novels: INovel[]
+	novels: ISearchNovel[]
 }
 
 export interface IChapter {
@@ -25,7 +33,7 @@ export interface IChapter {
 export interface ISourceChapter {
 	source: string,
 	url: string,
-	list: IChapter[] | string
+	list?: IChapter[]
 }
 
 export type ICompleteNovel = INovel & { chapter: IChapter[] };
@@ -34,8 +42,7 @@ export interface IPluginInitReturn {
 	/**
 	 * 插件名称
 	 */
-	title: string,
-
+	title: string
 }
 
 /**
@@ -46,16 +53,16 @@ export interface IBasePlugin {
 	 * 初始化插件
 	 * @param core 导出的引擎上下文
 	 */
-	InitPlugin(core: RobberEngine): Promise<void>;
-	/**
-	 * 搜索书
-	 * @param search 要搜索的书名
-	 */
-	GetList(search?: string, page?: number): Promise<INovelList>;
-	GetNovel(novel: INovel): Promise<ICompleteNovel>;
-	GetContent(chapter: IChapter): Promise<string>;
+	InitPlugin(core: RobberEngine): Promise<IPluginInitReturn>;
 }
 
 export interface IBaseSource {
-
+	/**
+	 * 搜索书
+	 * @param search 要搜索的书名
+	 * @param page 查询页
+	 */
+	GetList(search?: string, page?: number): Promise<ISearchNovelList>;
+	GetNovel(url: string): Promise<IChapter[]>;
+	GetContent(url: string): Promise<string>;
 }

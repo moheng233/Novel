@@ -1,10 +1,6 @@
-import Lowdb from 'lowdb';
-import FileSync from 'lowdb/adapters/FileSync';
-import { resolve } from 'path';
-
 import { v5 as uuid } from 'uuid';
 
-import { IBasePlugin, IChapter, ICompleteNovel, INovel, INovelList } from "./plugin";
+import { IBasePlugin, IBaseSource, INovel } from "./plugin";
 
 export interface INoveldb {
 	novel: INovel[]
@@ -20,14 +16,15 @@ export class RobberEngine {
 	 */
 	static object = new RobberEngine();
 
-	PluginsList: IBasePlugin[] = [];
-
-	Noveldb = Lowdb(new FileSync<INoveldb>(resolve(__dirname, "../db.json")));
+	PluginsList = new Set<IBasePlugin>();
+	SourceList = new Map<string,IBaseSource>();
 
 	constructor() {
-		this.Noveldb.defaults<{ novel: INovel[] }>({
-			novel: []
-		}).write();
+
+	}
+
+	async GetSourceList(){
+
 	}
 
 	/**
@@ -36,7 +33,7 @@ export class RobberEngine {
 	 * @param search 搜索
 	 */
 	async RemoteSearchNovel(search: string) {
-
+		return
 	}
 
 	/**
@@ -53,6 +50,10 @@ export class RobberEngine {
 	 */
 	async LoadPlugin(plugin: IBasePlugin) {
 		plugin.InitPlugin(this);
-		this.PluginsList.push(plugin);
+		this.PluginsList.add(plugin);
+	}
+
+	async RegisterSource(source_name: string,source: IBaseSource){
+		this.SourceList.set(source_name,source);
 	}
 }

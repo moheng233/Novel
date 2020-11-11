@@ -1,16 +1,20 @@
 {
 	"folders": [
 		{
-			"name": "✨ Novel",
+			"name": "✨ novel",
 			"path": "."
 		},
 		{
-			"name": "NovelDevourer",
-			"path": "NovelDevourer"
+			"name": "🧰 novelcli",
+			"path": "novelcli"
 		},
 		{
-			"name": "NovelRobber",
-			"path": "NovelRobber"
+			"name": "📱 NovelDevourer",
+			"path": "noveldevourer"
+		},
+		{
+			"name": "📗 novelrobber",
+			"path": "novelrobber"
 		}
 	],
 	"settings": {

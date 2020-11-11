@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"name": "✨ Novel",
+			"path": "."
+		},
+		{
+			"name": "NovelDevourer",
+			"path": "NovelDevourer"
+		},
+		{
+			"name": "NovelRobber",
+			"path": "NovelRobber"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "✨ Novel\\node_modules\\typescript\\lib"
+	}
+}

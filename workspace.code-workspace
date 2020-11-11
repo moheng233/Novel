@@ -5,7 +5,7 @@
 			"path": "."
 		},
 		{
-			"name": "🧰 novelcli",
+			"name": "🧰 NovelCli",
 			"path": "novelcli"
 		},
 		{
@@ -13,7 +13,7 @@
 			"path": "noveldevourer"
 		},
 		{
-			"name": "📗 novelrobber",
+			"name": "📗 NovelRobber",
 			"path": "novelrobber"
 		}
 	],

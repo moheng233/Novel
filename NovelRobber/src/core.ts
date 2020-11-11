@@ -1,4 +1,5 @@
 import { v5 as uuid } from 'uuid';
+import Logger from './logger';
 
 import { IBasePlugin, IBaseSource, INovel } from "./plugin";
 
@@ -49,11 +50,13 @@ export class RobberEngine {
 	 * @param plugin 要加载的插件
 	 */
 	async LoadPlugin(plugin: IBasePlugin) {
-		plugin.InitPlugin(this);
+		let DataPlugin = plugin.InitPlugin(this);
+		Logger.info(`${(await DataPlugin).title}加载完成`);
 		this.PluginsList.add(plugin);
 	}
 
 	async RegisterSource(source_name: string,source: IBaseSource){
 		this.SourceList.set(source_name,source);
+		Logger.info(`${source_name}源被添加`);
 	}
 }

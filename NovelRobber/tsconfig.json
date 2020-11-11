@@ -5,7 +5,10 @@
         "jsx": "preserve",
         "esModuleInterop": true,
         "sourceMap": true,
-        "importHelpers": true,
+		"importHelpers": true,
+		"declaration": true,
+		// "strict": true,
+		"declarationMap": true,
         "rootDir": "./src",
         "outDir": "./build"
     },

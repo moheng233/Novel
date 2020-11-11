@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "SearchNovel": {
+            "type": "object",
+            "properties": {
+                "search": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "search"
+            ],
+            "additionalProperties": false
+        },
+        "SearchNovelReturn": {
+            "$ref": "#/definitions/INovel"
+        },
+        "INovel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "chapter": {
+                    "$ref": "#/definitions/ISourceChapter"
+                },
+                "introduce": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "cover": {
+                    "type": "string"
+                },
+                "updatetime": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "chapter",
+                "updatetime"
+            ],
+            "additionalProperties": false
+        },
+        "ISourceChapter": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IChapter"
+                    }
+                }
+            },
+            "required": [
+                "source",
+                "url"
+            ],
+            "additionalProperties": false
+        },
+        "IChapter": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "number"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "number",
+                "url"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$id": "schema"
+}

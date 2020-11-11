@@ -11,21 +11,41 @@ export class NovelServer {
 
 	FASTIFY = fastify({
 		logger: Logger,
-		http2: true,
+		// http2: true,
 		ignoreTrailingSlash: true
 	});
 
-    constructor(){
-		this.FASTIFY.listen(3000,'0.0.0.0');
+	constructor() {
+		Logger.info(`开始监听服务器`)
+		this.FASTIFY.listen(3000, '0.0.0.0');
 
 		/**
 		 * 加载内置的插件源
 		 */
 
 		RobberEngine.object.LoadPlugin(new BuiltPlugin()).then(() => {
-			Logger.info('内置插件加载完毕');
+			Logger.info('插件加载完毕');
 		});
 
-        // @TODO
+		/**
+		 * 加载生成的json schema
+		 */
+
+		this.FASTIFY.addSchema(require("./Interfaces/schema.json"));
+		Logger.info(JSON.stringify(this.FASTIFY.getSchema('schema#/definitions/IChapter')));
+
+		/**
+		 * 注册一些基本路由
+		 */
+		this.FASTIFY.route({
+			method: "GET",
+			url: "/version",
+			handler: async (req, rep) => {
+				return {
+					version: "1.0"
+				}
+			}
+		})
+		// @TODO
 	}
 }

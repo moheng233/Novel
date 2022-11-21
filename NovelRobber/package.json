@@ -10,7 +10,7 @@
     "async": "^3.2.0",
     "cheerio": "^1.0.0-rc.3",
     "epub-gen": "^0.1.0",
-    "fastify": "^3.8.0",
+    "fastify": "^3.29.4",
     "figlet": "^1.5.0",
     "inquirer": "^7.3.3",
     "lowdb": "^1.0.0",
